@@ -7,6 +7,7 @@ class Xsb < Formula
   depends_on "makedepend" => :optional
   depends_on "pcre"
   depends_on "curl"
+  depends_on "libxml2"
 
   keg_only "XSB is Keg Only"
 
