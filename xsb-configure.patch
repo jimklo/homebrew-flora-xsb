@@ -1,0 +1,13 @@
+Index: configure.in
+===================================================================
+--- configure.in	(revision 8076)
++++ configure.in	(working copy)
+@@ -1388,7 +1388,7 @@
+                 AC_DEFINE(DARWIN)
+                 AC_DEFINE(FOREIGN_ELF)
+         	DYNMOD_LDFLAGS="-dynamiclib -single_module -nostartfiles"
+-        	DYNMOD_SHAREDLIB_EXTENSION=jnilib
++        	DYNMOD_SHAREDLIB_EXTENSION=dylib
+         ;;
+     *sgi* )     AC_DEFINE(FOREIGN_ELF)
+                 if test "${machine64bit}" = yes ; then
