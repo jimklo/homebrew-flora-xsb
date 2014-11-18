@@ -14,10 +14,7 @@ class Xsb < Formula
   keg_only "XSB is Keg Only"
   
   # Need to patch configure.in because the use of .jnilib for modules on OS is deprecated.
-  patch :p0 do
-    url "https://raw.githubusercontent.com/jimklo/homebrew-flora-xsb/master/xsb-configure.patch"
-    sha1 "5f878ed7d07d9ff10390b9747bfa1fdc6c932795"
-  end
+  patch :p0, :DATA
   
   def install
     ENV.deparallelize  # if your formula fails when building in parallel
@@ -36,3 +33,19 @@ class Xsb < Formula
   end
 
 end
+
+
+__END__
+Index: build/configure.in
+===================================================================
+--- build/configure.in	(revision 8087)
++++ build/configure.in	(working copy)
+@@ -1388,7 +1388,7 @@
+                 AC_DEFINE(DARWIN)
+                 AC_DEFINE(FOREIGN_ELF)
+         	DYNMOD_LDFLAGS="-dynamiclib -single_module -nostartfiles"
+-        	DYNMOD_SHAREDLIB_EXTENSION=jnilib
++        	DYNMOD_SHAREDLIB_EXTENSION=dylib
+         ;;
+     *sgi* )     AC_DEFINE(FOREIGN_ELF)
+                 if test "${machine64bit}" = yes ; then
